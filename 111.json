@@ -1,0 +1,121 @@
+{
+   "switch": "on",
+   "config_set": [
+      {
+         "target_api": "https://www.beseye.com",
+         "target_email": "xaviar.lin@beseye.com;vivian.chiug@beseye.com;Janny.xing@beseye.com",
+         "dps": 1,
+         "task_name": "AI-Set-emailHD1",
+         "stream_src": "rtsp://192.168.2.205/h264",
+         "AI_features": {
+            "HD": {
+               "ResultType": "Restricted_Email",
+               "GPU_Index": 0,
+               "ROIObj": [
+                  {
+                     "ROIID": "(Xaviar)",
+                     "ROIName": "ROI 205 ",
+                     "ROI": [
+                        [
+                           0.501,
+                           0.384
+                        ],
+                        [
+                           0.597,
+                           0.396
+                        ],
+                        [
+                           0.593,
+                           0.646
+                        ],
+                        [
+                           0.433,
+                           0.637
+                        ]
+                     ]
+                  }
+               ],
+               "ROI": [
+                  [
+                     0,
+                     0,
+                     1,
+                     1
+                  ],
+                  [
+                     0.5,
+                     0.5,
+                     0.75,
+                     0.75
+                  ]
+               ],
+               "Threshold": {
+                  "Min_Size": [
+                     0.01,
+                     0.01
+                  ]
+               }
+            }
+         },
+         "task_display_name": "205"
+      },
+      {
+         "target_api": "https://www.beseye.com",
+         "target_email": "xaviar.lin@beseye.com;vivian.chiu@beseye.com;Janny.xing@beseye.com",
+         "dps": 1,
+         "task_name": "AI-Set-emailHD2",
+         "stream_src": "rtsp://192.168.2.163/h264",
+         "AI_features": {
+            "HD": {
+               "ResultType": "Restricted_Email",
+               "GPU_Index": 0,
+               "ROIObj": [
+                  {
+                     "ROIID": "(Xaviar1)",
+                     "ROIName": "ROI 163",
+                     "ROI": [
+                        [
+                           0.566,
+                           0.048
+                        ],
+                        [
+                           0.708,
+                           0.117
+                        ],
+                        [
+                           0.62,
+                           0.682
+                        ],
+                        [
+                           0.329,
+                           0.583
+                        ]
+                     ]
+                  }
+               ],
+               "ROI": [
+                  [
+                     0,
+                     0,
+                     1,
+                     1
+                  ],
+                  [
+                     0.5,
+                     0.5,
+                     0.75,
+                     0.75
+                  ]
+               ],
+               "Threshold": {
+                  "Min_Size": [
+                     0.01,
+                     0.01
+                  ]
+               }
+            }
+         },
+         "task_display_name": "163"
+      }
+   ]
+}
