@@ -4,7 +4,7 @@ import sys
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
-from combotest import *
+from widgetwindow import *
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -60,6 +60,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 for i,j in enumerate(self.data[self.ui.g1.currentText()]):
                     self.ui.num.addItem(str(i))
                     self.g1_index = self.ui.g1.itemData(g1_index)[int(self.ui.num.currentText())]#list
+
         except Exception as e:
             print('Error:',e)
 
@@ -76,7 +77,10 @@ class MainWindow(QtWidgets.QMainWindow):
         for key,val in self.data[self.ui.g1.currentText()][int(self.ui.num.currentText())].items():
               self.ui.g2.addItem(key,val)
               self.ui.textEdit.setText(json.dumps(self.data[self.ui.g1.currentText()][int(self.ui.num.currentText())],indent=3))
-
+              self.g1_index = self.data[self.ui.g1.currentText()][int(self.ui.num.currentText())]
+              print(type(val),val)
+              #self.ui.listWidget.addItems(val)
+    
 
     def g2_changed(self,g2_index):#選項AI_features
         self.ui.g3.clear()
@@ -93,6 +97,8 @@ class MainWindow(QtWidgets.QMainWindow):
             else:
               for key,val in self.g1_index[self.ui.g2.currentText()].items():
                 self.ui.g3.addItem(key,val)
+                print(key,val)
+                #self.ui.listWidget.insertItem(key,val)
                 self.g2_index = self.ui.g2.itemData(g2_index)
                 self.ui.textEdit.setText(json.dumps(self.ui.g2.itemData(g2_index),indent=3))
         except Exception as e:
@@ -112,7 +118,7 @@ class MainWindow(QtWidgets.QMainWindow):
         except Exception as e:
             print('Error:',e)
 
-    def g4_changed(self,g4_index):#顯示ROI再底下(可能有array[]要再拆解)
+    def g4_changed(self,g4_index):#顯示ROI再底下(可能有list[]要再拆解)
         self.ui.num1.clear()
         self.ui.g5.clear()
         self.ui.textEdit.setText('')
@@ -125,7 +131,7 @@ class MainWindow(QtWidgets.QMainWindow):
               for i,j in enumerate(self.g3_index[self.ui.g4.currentText()]):#type:dict_item,不能為list
                 self.ui.num1.addItem(str(i))
                 self.ui.textEdit.setText(json.dumps(self.ui.g4.itemData(g4_index),indent=3))
-            else:
+            else:#dict
                for key,val in self.g3_index[self.ui.g4.currentText()].items():#type:dict_item,不能為list
                 self.ui.g5.addItem(key,val)
                 self.ui.textEdit.setText(self.g3_index[self.ui.g4.currentText()])
@@ -144,6 +150,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.ui.textEdit.setText(json.dumps(self.g4_index, indent=3))
         else:
                 self.ui.t3.setText(json.dumps(self.g3_index[self.ui.g4.currentText()][int(self.ui.num1.currentText())]))
+                #self.ui.tableView.addItems(self.g3_index[self.ui.g4.currentText()][int(self.ui.num1.currentText())])
+                print(self.data[self.ui.g1.currentText()][int(self.ui.num.currentText())][self.ui.g2.currentText()][self.ui.g3.currentText()][self.ui.g4.currentText()])
 
     def g5_changed(self,g5_index):
         if type(self.ui.g5.itemData(g5_index)) != list and type(self.ui.g5.itemData(g5_index)) != dict:
@@ -153,7 +161,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def save_changed(self):
         try:
-            for key,val in self.data.items():
+            for key,val in self.data.items():#config_set
                 if key == self.ui.g1.currentText() and self.ui.t1.text()!= '' :
                     self.data[key] = self.ui.t1.text()
                     update = json.dumps(self.data,indent=3)
@@ -162,9 +170,12 @@ class MainWindow(QtWidgets.QMainWindow):
                         file.write(update)
                         file.close()
                         QtWidgets.QMessageBox.information(self,'Success','Saved Successfully.',QtWidgets.QMessageBox.Yes)
-            for k1,v1 in self.g1_index.items():
-                if k1 == self.ui.g2.currentText() and self.ui.t2.text() != '':
-                    self.g1_index[k1] = self.ui.t2.text()
+            for k1,v1 in self.g1_index.items():#AI_features
+                if k1 == self.ui.g2.currentText() and self.ui.t2.toPlainText() != '':
+                    if type(v1) == str:
+                        self.g1_index[k1] = self.ui.t2.toPlainText()
+                    elif type(v1) == int:
+                        self.g1_index[k1] = int(self.ui.t2.toPlainText())
                     self.data[self.ui.g1.currentText()][int(self.ui.num.currentText())].update(self.g1_index)
                     update = json.dumps(self.data,indent=3)
                     filename = self.filenames
@@ -173,10 +184,18 @@ class MainWindow(QtWidgets.QMainWindow):
                         file.close()
                         QtWidgets.QMessageBox.information(self,'Success','Saved Successfully.',QtWidgets.QMessageBox.Yes)
 
-            for k2,v2 in self.g3_index.items():
+            
+            for k2,v2 in self.g3_index.items():#HD->ROI
                 if k2 == self.ui.g4.currentText() and self.ui.t3.text() != '':
-                    self.g3_index[k2] = self.ui.t3.text()
-                    self.data[self.ui.g1.currentText()][int(self.ui.num.currentText())][self.ui.g2.currentText()].update(self.g3_index)
+                    if type(v2) != list:
+                        if type(v2) == str:
+                            self.g3_index[k2] = self.ui.t3.text()
+                        elif type(v2) == int:
+                            self.g3_index[k2] = int(self.ui.t3.text())
+                        self.data[self.ui.g1.currentText()][int(self.ui.num.currentText())][self.ui.g2.currentText()].update(self.g3_index)
+                    else:
+                        self.g3_index[k2] = list(eval(self.ui.t3.text()))
+                        self.data[self.ui.g1.currentText()][int(self.ui.num.currentText())][self.ui.g2.currentText()][self.ui.g3.currentText()][self.ui.g4.currentText()].update(self.g3_index)
                     update = json.dumps(self.data,indent=3)
                     filename = self.filenames
                     with open(filename[0],'w') as file:#write寫入filename[0]:儲存位置
@@ -184,7 +203,7 @@ class MainWindow(QtWidgets.QMainWindow):
                         file.close()
                         QtWidgets.QMessageBox.information(self,'Success','Saved Successfully.',QtWidgets.QMessageBox.Yes)
 
-            for k3,v3 in self.g4_index.items():
+            for k3,v3 in self.g4_index.items():#ROINAME
                 if k3 == self.ui.g5.currentText() and self.ui.t4.text() != '':
                     self.g4_index[k3] = self.ui.t4.text()
                     self.data[self.ui.g1.currentText()][int(self.ui.num.currentText())][self.ui.g2.currentText()][self.ui.g3.currentText()][self.ui.g4.currentText()][int(self.ui.num1.currentText())].update(self.g4_index)       
@@ -193,8 +212,9 @@ class MainWindow(QtWidgets.QMainWindow):
                     with open(filename[0],'w') as file:
                         file.write(update)
                         file.close()
-                        QtWidgets.QMessageBox.information(self,'Success','Saved Successfully.',QtWidgets.QMessageBox.Yes)     
-
+                        QtWidgets.QMessageBox.information(self,'Success','Saved Successfully.',QtWidgets.QMessageBox.Yes)
+        except IndexError:
+            QtWidgets.QMessageBox.warning(self,'Hint','Index error.',QtWidgets.QMessageBox.Yes)               
         except JSONDecodeError:
             QtWidgets.QMessageBox.warning(self,'Hint','Not json format.',QtWidgets.QMessageBox.Yes)
         except Exception as e:

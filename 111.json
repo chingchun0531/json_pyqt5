@@ -1,5 +1,5 @@
 {
-   "switch": "on",
+   "switch": "off",
    "config_set": [
       {
          "target_api": "https://www.beseye.com",
@@ -71,8 +71,6 @@
                "GPU_Index": 0,
                "ROIObj": [
                   {
-                     "ROIID": "(Xaviar1)",
-                     "ROIName": "ROI 163",
                      "ROI": [
                         [
                            0.566,
@@ -90,7 +88,9 @@
                            0.329,
                            0.583
                         ]
-                     ]
+                     ],
+                     "ROIID": "(Xaviar1)",
+                     "ROIName": "ROI 163"
                   }
                ],
                "ROI": [
@@ -98,7 +98,7 @@
                      0,
                      0,
                      1,
-                     1
+                     2
                   ],
                   [
                      0.5,
