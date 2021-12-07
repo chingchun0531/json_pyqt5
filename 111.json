@@ -1,5 +1,5 @@
 {
-   "switch": "off",
+   "switch": "on",
    "config_set": [
       {
          "target_api": "https://www.beseye.com",
@@ -102,7 +102,7 @@
                      0,
                      0,
                      1,
-                     2
+                     1
                   ],
                   [
                      0.5,
