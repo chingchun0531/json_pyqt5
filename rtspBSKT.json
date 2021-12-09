@@ -1,0 +1,45 @@
+{
+   "config_set": [
+      {
+         "task_name": "AI-Set-impappBSKT-rtsp",
+         "AI_features": {
+            "BodySKTracker": {
+               "Threshold": {
+                  "Min_Size": [
+                     0.01,
+                     0.01
+                  ]
+               },
+               "GPU_Index": 0,
+               "ROIObj": [
+                  {
+                     "ROIName": "ROI01",
+                     "ROIID": "ROI02",
+                     "ROI": [
+                        [
+                           0.01,
+                           0.099
+                        ],
+                        [
+                           0.977,
+                           0.065
+                        ],
+                        [
+                           0.982,
+                           0.978
+                        ],
+                        [
+                           0.01,
+                           0.978
+                        ]
+                     ]
+                  }
+               ]
+            }
+         },
+         "dps": 10,
+         "stream_src": "rtsp://192.168.2.205/h264"
+      }
+   ],
+   "switch": "on"
+}

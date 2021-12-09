@@ -1,5 +1,5 @@
 {
-   "switch": "on",
+   "switch": "off",
    "config_set": [
       {
          "target_api": "https://www.beseye.com",
@@ -18,7 +18,7 @@
                      "ROI": [
                         [
                            0.501,
-                           0.384
+                           0.386
                         ],
                         [
                            0.597,
@@ -51,7 +51,7 @@
                ],
                "Threshold": {
                   "Min_Size": [
-                     0.01,
+                     0.02,
                      0.01
                   ]
                }
