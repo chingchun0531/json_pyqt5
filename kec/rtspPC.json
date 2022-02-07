@@ -1,0 +1,47 @@
+{
+    "config_set": [
+        {
+            "dps": 15,
+            "task_name": "88a2f1340d434e66a1abb8d43d2d5d88",
+            "target_api": "https://oregon-p2-dev-api-1.beseye.com",
+            "stream_src": "rtsp://192.168.2.205/stream1",
+            "AI_features": {
+                "PC": {
+                    "ResultType": "Api",
+                    "GPU_Index": 0,
+                    "ROIObj": [
+                        {
+                            "ROI": [
+                                [
+                                    0.436,
+                                    0.535
+                                ],
+                                [
+                                    0.626,
+                                    0.549
+                                ],
+                                [
+                                    0.611,
+                                    0.699
+                                ],
+                                [
+                                    0.411,
+                                    0.68
+                                ]
+                            ],
+                            "ROIName": "ROI01",
+                            "ROIID": "88a2f1340d434e66a1a1624335745639"
+                        }
+                    ],
+                    "Threshold": {
+                        "Min_Size": [
+                            0.01,
+                            0.01
+                        ]
+                    }
+                }
+            }
+        }
+    ],
+    "switch": "on"
+}

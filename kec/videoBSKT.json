@@ -1,0 +1,46 @@
+{
+  "switch":"on",
+  "config_set": [
+    {
+      "target_api": "https://oregon-p2-dev-api-1.beseye.com",
+      "task_name": "AI-Set-impappBSKT-video",
+      "stream_src": "/var/log/beseye/Beseye_2020_09_18_11_00_01_50-100M_7.mp4",
+      "dps": 5,
+      "AI_features": {
+        "BodySKTracker": {
+          "ROIObj": [
+            {
+              "ROIID": "ROI01",
+              "ROIName": "ROI01",
+              "ROI": [
+                [
+                    0.026,
+                    0.043
+                ],
+                [
+                    0.977,
+                    0.044
+                ],
+                [
+                    0.978,
+                    0.97
+                ],
+                [
+                    0.018,
+                    0.975
+                ]
+            ]
+            }
+          ],
+          "Threshold": {
+            "Min_Size": [
+              0.01,
+              0.01
+            ]
+          },
+          "GPU_Index":0
+        }
+      }
+    }
+  ]
+}

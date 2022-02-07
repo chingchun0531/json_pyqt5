@@ -1,0 +1,31 @@
+{
+    "config_set": [
+        {
+            "AI_features": {
+                "HD": {
+                    "ROI": [
+                        [
+                            0,
+                            0,
+                            1,
+                            1
+                        ]
+                    ],
+                    "Threshold": {
+                        "Min_Size": [
+                            0.01,
+                            0.01
+                        ]
+                    },
+                    "GPU_Index": 0
+                }
+            },
+            "dps": 30,
+            "target_api": "https://www.beseye.com",
+            "target_email": "gavin.chang@beseye.com",
+            "stream_src": "/var/log/beseye/Beseye_2020_09_18_11_00_01_50-100M_7.mp4",
+            "task_name": "AI-Set-video30HD"
+        }
+    ],
+    "switch": "on"
+}

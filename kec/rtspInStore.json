@@ -1,0 +1,133 @@
+{
+    "config_set": [
+        {
+            "target_api": "https://oregon-p2-dev-api-1.beseye.com",
+            "stream_src": "rtsp://192.168.2.205/stream1",
+            "dps": 15,
+            "task_name": "c6a7fb2b7de74ac29fc245789136403c",
+            "AI_features": {
+                "PC": {
+                    "GPU_Index": 0,
+                    "ROIObj": [
+                        {
+                            "ROIID": "c6a7fb2b7de74ac29fc1635126228768",
+                            "ROIName": "c6a_in",
+                            "ROI": [
+                                [
+                                    0.458,
+                                    0.667
+                                ],
+                                [
+                                    0.592,
+                                    0.702
+                                ],
+                                [
+                                    0.574,
+                                    0.889
+                                ],
+                                [
+                                    0.425,
+                                    0.887
+                                ]
+                            ]
+                        },
+                        {
+                            "ROIID": "c6a7fb2b7de74ac29fc1635308427357",
+                            "ROIName": "c6a_out",
+                            "ROI": [
+                                [
+                                    0.587,
+                                    0.883
+                                ],
+                                [
+                                    0.448,
+                                    0.835
+                                ],
+                                [
+                                    0.472,
+                                    0.715
+                                ],
+                                [
+                                    0.588,
+                                    0.751
+                                ]
+                            ]
+                        }
+                    ],
+                    "Threshold": {
+                        "Min_Size": [
+                            0.01,
+                            0.01
+                        ]
+                    },
+                    "ResultType": "Api"
+                }
+            }
+        },
+        {
+            "target_api": "https://oregon-p2-dev-api-1.beseye.com",
+            "stream_src": "rtsp://192.168.2.163/stream1",
+            "dps": 15,
+            "task_name": "979cdec3e30a48379a48ec50f211faae",
+            "AI_features": {
+                "PC": {
+                    "GPU_Index": 0,
+                    "ROIObj": [
+                        {
+                            "ROIID": "979cdec3e30a48379a41635308368418",
+                            "ROIName": "979_in",
+                            "ROI": [
+                                [
+                                    0.469,
+                                    0.38
+                                ],
+                                [
+                                    0.652,
+                                    0.491
+                                ],
+                                [
+                                    0.63,
+                                    0.628
+                                ],
+                                [
+                                    0.436,
+                                    0.521
+                                ]
+                            ]
+                        },
+                        {
+                            "ROIID": "979cdec3e30a48379a41635308269621",
+                            "ROIName": "979_out",
+                            "ROI": [
+                                [
+                                    0.635,
+                                    0.612
+                                ],
+                                [
+                                    0.448,
+                                    0.505
+                                ],
+                                [
+                                    0.483,
+                                    0.344
+                                ],
+                                [
+                                    0.662,
+                                    0.443
+                                ]
+                            ]
+                        }
+                    ],
+                    "Threshold": {
+                        "Min_Size": [
+                            0.01,
+                            0.01
+                        ]
+                    },
+                    "ResultType": "Api"
+                }
+            }
+        }
+    ],
+    "switch": "on"
+}
